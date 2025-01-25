@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Name to Coins Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f8ff;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        input[type="text"] {
+            padding: 10px;
+            margin: 10px 0;
+            width: 80%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Name to Coins Generator</h1>
+        <p>Enter your name and discover your coins!</p>
+        <input type="text" id="nameInput" placeholder="Enter your name here...">
+        <br>
+        <button onclick="generateCoins()">Get Coins</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function generateCoins() {
+            const name = document.getElementById('nameInput').value;
+            if (!name) {
+                document.getElementById('result').textContent = "Please enter a name!";
+                return;
+            }
+            
+            let coins = 0;
+            for (let char of name) {
+                coins += char.charCodeAt(0); // Sum of ASCII values of each character
+            }
+
+            document.getElementById('result').textContent = `${name}, you have ${coins} coins!`;
+        }
+    </script>
+</body>
+</html>
